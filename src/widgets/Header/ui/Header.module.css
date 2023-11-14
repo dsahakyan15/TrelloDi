@@ -1,0 +1,30 @@
+.header {
+  background-color: #212529;
+  color: #fff;
+  padding: 15px 10px;
+  justify-content: space-between;
+  display: flex;
+  align-items: center;
+}
+.brand {
+  font-weight: 500;
+  line-height: 1.2;
+  font-size: 1.5em;
+}
+.menu {
+  display: flex;
+}
+.list {
+  display: flex;
+}
+.list li {
+  margin: 0 10px;
+  transition: 0.3s;
+  padding: 10px;
+  display: block;
+  border-radius: 10px;
+}
+.list li:hover {
+  color: #272323;
+  background-color: #fff;
+}

@@ -1,0 +1,73 @@
+.card {
+  background-color: #f1f2f4;
+  padding: 20px 15px;
+  margin: 5px 5px;
+  border-radius: 10px;
+  min-width: 280px;
+  color: #172b4d;
+  cursor: pointer;
+}
+.cardHead {
+  margin: 0 10px 15px;
+  display: flex;
+  justify-content: space-between;
+}
+.cardTitle {
+  font-size: 13px;
+  margin: 3px 0 6px 7px;
+}
+.cardActions {
+  padding: 10px 10px 5px;
+  border-radius: 10px;
+}
+.cardActions:hover {
+  background-color: #d0d4db;
+  transition: 0.3s;
+}
+.cardBody {
+  margin: 0 0 10px 0;
+}
+.cardTask {
+  display: block;
+  background-color: #fff;
+  padding: 10px 13px;
+  border-radius: 10px;
+  margin: 10px 0;
+  box-shadow: var(
+    --ds-shadow-raised,
+    0px 1px 1px #091e4240,
+    0px 0px 1px #091e424f
+  );
+}
+.cardTask:hover {
+  outline: auto;
+}
+
+.cardTaskContent {
+  font-size: 14px;
+}
+.inter {
+  align-items: center;
+  display: flex;
+  margin: 10px 10px 5px;
+}
+.interNotific {
+  font-size: 12px;
+  margin-left: 2px;
+}
+
+.cardAdd {
+  color: #52617a;
+  margin: 10px 0;
+  padding: 10px 13px;
+  align-items: center;
+  border-radius: 10px;
+}
+.addACard {
+  align-items: center;
+}
+.cardAdd:hover {
+  background-color: #d0d4db;
+  color: #243757;
+  transition: 0.3s;
+}

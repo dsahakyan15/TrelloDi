@@ -1,0 +1,84 @@
+.signUp {
+  min-height: 100vh;
+  background-color: #fff;
+  display: block;
+}
+.window {
+  box-shadow: 4px 4px 8px 4px rgba(34, 60, 80, 0.2);
+  width: 500px;
+  height: 700px;
+  margin: 150px auto;
+  border-radius: 20px;
+}
+.title {
+  width: 100%;
+  text-align: center;
+  padding: 20px 0;
+  border-bottom: 2px solid rgba(80, 79, 79, 0.445);
+  font-size: 30px;
+}
+
+.form {
+  padding: 100px 50px 0 50px;
+  display: flex;
+  flex-direction: column;
+}
+.form > div {
+  font-size: 25px;
+  align-items: start;
+  display: flex;
+  flex-direction: column;
+  margin: 20px 0;
+}
+.form > div > input {
+  min-width: 300px;
+  width: 100%;
+  min-height: 30px;
+  font-size: 20px;
+  margin: 20px 0px 0;
+}
+.formBtn{
+    padding: 10px 20px;
+    background-color: #fff;
+    width: 40%;
+    margin: 20px auto 0 ;
+    outline: none;
+    border:2px solid black;
+    display: block;
+    cursor: pointer;
+}
+.apiReg{
+    margin: 50px 0 0 0;
+}
+.walker{
+    margin: 0 auto;
+    width: 70%;
+    border: 2px solid rgba(19, 18, 18, 0.267);
+    display: flex;
+}
+.icons{
+    display: flex;
+    margin: 50px auto;
+    justify-content: space-between;
+    padding: 0 150px;
+}
+.google,.github{
+    font-size: 20px;
+    padding: 10px 10px 5px;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+.google:hover,.github:hover{
+    
+    background-color: #d0d4db;
+}
+
+.backRound{
+    width: 500px;
+    height: 500px;
+    border:10px solid black;
+    border-radius:100%;
+    position: absolute;
+    left: -20vh;
+    top: -20vh;
+}

@@ -1,0 +1,57 @@
+
+.desktopBody {
+     background-image: linear-gradient(#1574f0, #4e94f0) ;
+  width: 100%;
+  height: 100vh;
+}
+.desktopHead {
+  width: 100%;
+  padding: 15px 30px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  box-sizing: border-box;
+  background-color: #0000001e;
+}
+.desktopTitle {
+  color: #fff;
+}
+.toStar{
+  cursor: pointer;
+  color: #fff;
+  font-size: 17px;
+  display: flex;
+  margin: 0 20px;
+  padding: 5px;
+  border-radius: 5px;
+  box-sizing: border-box;
+  transition: 0.4s;
+}
+.toStar:hover{
+  background-color: #A6C5E229;
+}
+.cardsFilter{
+  cursor: pointer;
+  color: #fff;
+  font-size: 20px;
+  display: flex;
+  margin: 0 20px;
+  padding: 5px;
+  border-radius: 5px;
+  box-sizing: border-box;
+  transition: 0.4s;
+  align-items: center;
+  margin-left: auto;
+}
+.cardsFilter span {
+  color: #fff;
+  margin-left: 5px;
+  font-size: 15px;
+}
+.cardsFilter:hover{
+  background-color: #A6C5E229;
+}
+.cards {
+  display: flex;
+  padding: 10px; 
+}
