@@ -1,0 +1,150 @@
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  background-color: #000000a3;
+}
+.window {
+  display: flex;
+  flex-direction: column;
+  width: inherit;
+  max-width: 760px;
+  margin: 50px auto;
+  padding: 20px 30px;
+  border-radius: 15px;
+  background-color: #f1f2f4;
+  color: #44546f;
+}
+.headerIcon {
+  margin-top: 5px;
+  font-size: 23px;
+}
+.windowHeader {
+  display: flex;
+  margin-bottom: 70px;
+}
+.headerTitle {
+  margin-left: 20px;
+}
+.headerTitle h2 {
+  font-size: 20px;
+  font-weight: 600;
+}
+.headerClose {
+  margin: 5px 0 0 auto;
+  font-size: 20px;
+}
+.titleInline {
+  font-size: 14px;
+}
+.inline {
+  text-decoration: underline;
+}
+
+.windowMain {
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+}
+
+.activityHeader {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+}
+.activityIcon {
+  font-size: 20px;
+  margin-top: 5px;
+}
+.activityTitle {
+  margin-left: 20px;
+}
+.activityTitle h2 {
+  font-size: 20px;
+  font-weight: 600;
+}
+.member {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.memberAvatar img,
+.commAvatar img {
+  width: 32px;
+}
+.memberWrite {
+  margin-left: 20px;
+  box-sizing: border-box;
+  width: 100%;
+}
+.memberWrite input {
+  outline: none;
+  box-shadow: 0px 1px 1px #091e4240, 0px 0px 1px #091e424f;
+  border: none;
+  color: #172b4d;
+  box-sizing: border-box;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+  padding: 8px 12px;
+  width: 100%;
+  background-color: #fff;
+  border-radius: 8px;
+}
+.memberWrite input:hover {
+  background-color: #f7f8f9;
+  cursor: pointer;
+}
+
+.comments {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.commentsComm {
+  display: flex;
+  margin-bottom: 20px;
+}
+.commMain {
+  margin-left: 20px;
+  width: 100%;
+}
+.commHeader {
+  display: flex;
+  align-items: center;
+}
+.commTitle {
+  font-weight: 700;
+  margin-right: 10px;
+}
+.commDate , .reply{
+  color: #44546f;
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.commContent {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 1px 1px #091e4240, 0 0 1px #091e424f;
+  display: block;
+  margin: 4px 2px 4px 0;
+  padding: 8px 12px;
+}
+.commContent p {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+}
+
+
+.commReactions{
+    margin: 5px 0 0 10px;
+}
+.reply{
+    text-decoration: underline;
+}

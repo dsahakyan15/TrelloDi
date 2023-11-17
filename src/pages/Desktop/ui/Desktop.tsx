@@ -1,13 +1,16 @@
 import Header from "widgets/Header"
 import Card from "widgets/Card"
+import TaskModal from "pages/TaskModal"
+
 import { AiOutlineStar } from 'react-icons/ai'
 import { BsFilter } from 'react-icons/bs'
 import styles from './Desktop.module.css'
 
-const Desktop = ({handleSignOut}:any) => {
+const Desktop = ({ handleSignOut }: any) => {
   return (
     <div className={styles.desktop}>
       <Header />
+      <TaskModal />
       <div className={styles.desktopBody}>
         <div className={styles.desktopHead}>
           <h3 className={styles.desktopTitle}>
