@@ -1,16 +1,28 @@
+import { FC } from 'react'
+
 import Header from "widgets/Header"
-import Card from "widgets/Card"
+import Cards from "widgets/Cards"
 import TaskModal from "pages/TaskModal"
 
 import { AiOutlineStar } from 'react-icons/ai'
 import { BsFilter } from 'react-icons/bs'
 import styles from './Desktop.module.css'
+import { DesktopProps } from './Desktop.interface'
 
-const Desktop = ({ handleSignOut }: any) => {
+
+
+
+
+const Desktop: FC<DesktopProps> = ({initialColumns}) => {
+  console.log(initialColumns);
+  
   return (
     <div className={styles.desktop}>
       <Header />
-      <TaskModal />
+
+
+      {/* esi modali patuhanna */}
+      {/* <TaskModal /> */}
       <div className={styles.desktopBody}>
         <div className={styles.desktopHead}>
           <h3 className={styles.desktopTitle}>
@@ -24,10 +36,7 @@ const Desktop = ({ handleSignOut }: any) => {
             <BsFilter /> <span>Filters</span>
           </div>
         </div>
-        <div className={styles.cards}>
-          <Card />
-
-        </div>
+        <Cards initialColumns={initialColumns}/>
       </div>
     </div>
   )

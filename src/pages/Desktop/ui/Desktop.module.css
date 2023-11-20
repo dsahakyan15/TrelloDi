@@ -51,7 +51,3 @@
 .cardsFilter:hover{
   background-color: #A6C5E229;
 }
-.cards {
-  display: flex;
-  padding: 10px; 
-}

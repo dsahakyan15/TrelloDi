@@ -11,37 +11,5 @@ import { auth } from "shared/api/firebase";
 export const UserContext = createContext({})
 
 
-// export const UserProvider = ({ children }: any) => {
-//     const [user, setUser] = useState(null);
-
-//     const login = (userData: any) => {
-//         setUser(userData);
-//     };
-
-//     const logout = () => {
-//         auth.signOut();
-//         setUser(null);
-//     };
-
-//     const updateUserProfile = (newData: any) => {
-//         setUser((prevUser: any) => ({
-//             ...prevUser,
-//             ...newData,
-//         }));
-//     };
-
-//     return (
-//         <UserContext.Provider value={{ user, login, logout, updateUserProfile} }>
-//         { children }
-//         </UserContext.Provider>
-        
-//   )
-// };
-
-// export const useUser = () => {
-//     return useContext(UserContext);
-// };
-
-
 
 export const LOCAL_STORAGE_USER_KEY = 'user'

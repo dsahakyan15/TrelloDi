@@ -1,0 +1,9 @@
+.github{
+    font-size: 20px;
+    padding: 10px 10px 5px;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+.github:hover{
+    background-color: #d0d4db;
+}

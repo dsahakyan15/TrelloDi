@@ -1,23 +1,24 @@
 import { FC } from 'react'
-import { FaGoogle } from 'react-icons/fa6'
-import styles from './SignInGoogle.module.css'
+import { FaGithub } from 'react-icons/fa6'
+import styles from './SignInGithub.module.css'
 import { auth } from 'shared/api/firebase'
-import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth'
+import { GithubAuthProvider, signInWithPopup } from 'firebase/auth'
 import useUser from 'app/providers/UserProvider/useUser'
 
-const SignInGoogle: FC = () => {
+const SignInGithub: FC = () => {
     const { login }: any = useUser()
 
 
     const signIn = async () => {
-        const provider = new GoogleAuthProvider()
+        const provider = new GithubAuthProvider()
 
         try {
             const result = await signInWithPopup(auth, provider)
+            //  TODO chi gali displayName@
 
-            const user = result.user;
+            const user = await result.user;
+
             console.log(user);
-
 
             login({
                 uid: user.uid,
@@ -26,19 +27,14 @@ const SignInGoogle: FC = () => {
                 // eli baner useri
             })
 
-
-
-            // updateUserProfile();
-
-
         } catch (err) {
-            console.log('error with Google auth ', err)
+            console.log('error with Github auth ', err)
         }
     }
     return (
-        <div onClick={signIn} className={styles.google}>
-            <FaGoogle />
+        <div onClick={signIn} className={styles.github}>
+            <FaGithub />
         </div>
     )
 }
-export default SignInGoogle
+export default SignInGithub

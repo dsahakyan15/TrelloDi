@@ -7,10 +7,7 @@ import useUser from 'app/providers/UserProvider/useUser'
 const Header = () => {
 
 const {user,logout}:any = useUser()
-setTimeout(()=>{
-  console.log(user);
-  
-},1000)
+
 
   return (
     <div className={styles.header}>
@@ -21,7 +18,7 @@ setTimeout(()=>{
         <ul className={styles.list}>
           <li>Desktop</li>
           <li onClick={logout}>Sign Out</li>
-          <li>User Page , {user}</li>
+          <li>User Page , {user?.displayName}</li>
         </ul>
       </div>
     </div>

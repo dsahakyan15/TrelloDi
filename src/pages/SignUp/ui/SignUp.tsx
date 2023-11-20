@@ -1,7 +1,9 @@
 import { FC } from "react";
-import { FaGithub } from 'react-icons/fa6'
-import styles from './SignUp.module.css'
 import SignInGoogle from "widgets/SignInGoogle";
+import SignInGithub from "widgets/SignInGithub";
+
+
+import styles from './SignUp.module.css'
 
 const SignUp: FC = () => {
     return (
@@ -24,9 +26,7 @@ const SignUp: FC = () => {
                     <div className={styles.walker}></div>
                     <div className={styles.icons}>
                         <SignInGoogle/>
-                        <div className={styles.github}>
-                            <FaGithub/>
-                        </div>
+                        <SignInGithub/>
                     </div>
                 </div>
             </div>
