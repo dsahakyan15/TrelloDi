@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import styles from './Header.module.css'
 
 
@@ -6,7 +7,7 @@ import useUser from 'app/providers/UserProvider/useUser'
 
 const Header = () => {
 
-const {user,logout}:any = useUser()
+  const { user, logout }: any = useUser()
 
 
   return (
@@ -16,9 +17,29 @@ const {user,logout}:any = useUser()
       </div>
       <div className={styles.menu}>
         <ul className={styles.list}>
-          <li>Desktop</li>
-          <li onClick={logout}>Sign Out</li>
-          <li>User Page , {user?.displayName}</li>
+          <li>
+            <Link to="/boards">
+              <span className={styles.listItem}>
+                Boards
+              </span>
+            </Link>
+
+          </li>
+          <li onClick={logout}>
+            <Link to="/">
+              <span className={styles.listItem}>
+                Sign Out
+              </span>
+            </Link>
+
+          </li>
+          <li>
+            <Link to="/user">
+              <span className={styles.listItem}>
+                User Page , {user?.displayName}
+              </span>
+            </Link>
+          </li>
         </ul>
       </div>
     </div>

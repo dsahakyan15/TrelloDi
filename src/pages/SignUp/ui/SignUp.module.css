@@ -1,7 +1,8 @@
 .signUp {
-  min-height: 100vh;
-  background-color: #fff;
-  display: block;
+  height: 100vh;
+  /* background-color: #fff; */
+  display: flex;
+  overflow: auto;
 }
 .window {
   box-shadow: 4px 4px 8px 4px rgba(34, 60, 80, 0.2);

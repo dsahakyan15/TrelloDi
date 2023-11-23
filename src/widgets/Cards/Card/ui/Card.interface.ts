@@ -14,5 +14,5 @@ export interface ColumnType {
 
 export interface CardProps{
     col:ColumnType;
-    ref:any;
+    provided:any;
 }

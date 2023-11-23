@@ -4,6 +4,7 @@ import SignInGithub from "widgets/SignInGithub";
 
 
 import styles from './SignUp.module.css'
+import { Link } from "react-router-dom";
 
 const SignUp: FC = () => {
     return (
@@ -21,6 +22,7 @@ const SignUp: FC = () => {
                         <input type="text" id="username" />
                     </div>
                     <button className={styles.formBtn}>Le`go</button>
+                    <Link to="/desktop"><button className={styles.formBtn}>Lu`go</button></Link>
                 </div>
                 <div className={styles.apiReg}>
                     <div className={styles.walker}></div>

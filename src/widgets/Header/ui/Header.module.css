@@ -17,14 +17,15 @@
 .list {
   display: flex;
 }
-.list li {
+.listItem {
   margin: 0 10px;
   transition: 0.3s;
   padding: 10px;
   display: block;
   border-radius: 10px;
+  color:#fff;
 }
-.list li:hover {
+.listItem:hover {
   color: #272323;
   background-color: #fff;
 }

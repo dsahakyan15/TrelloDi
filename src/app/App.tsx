@@ -1,14 +1,16 @@
 import { onAuthStateChanged, User } from "firebase/auth"
 import { useEffect, useState } from "react"
 import { BrowserRouter, Routes, Route } from "react-router-dom"
-import { ColumnType , TaskType } from 'widgets/Cards/Card/ui/Card.interface'
+import { ColumnType } from 'widgets/Cards/Card/ui/Card.interface'
 import { auth } from "shared/api/firebase"
 
 import './styles/index.css'
 
 import Desktop from "pages/Desktop"
 import TaskModal from "pages/TaskModal"
+import UserPage from "pages/UserPage"
 import SignUp from "pages/SignUp"
+import Boards from "pages/Boards"
 
 const App = () => {
 
@@ -34,7 +36,7 @@ const App = () => {
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, currentUser => {
-      // console.log(currentUser)
+      console.log(currentUser)
       setUser(currentUser)
     })
 
@@ -46,8 +48,10 @@ const App = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/desktop" element={<Desktop initialColumns={initialColumns} />} />
         <Route path="/desktop/taskmodal/:id" element={<TaskModal />} />
+        <Route path="/desktop" element={<Desktop initialColumns={initialColumns} />} />
+        <Route path="/user" element={<UserPage/>} />
+        <Route path="/boards" element={<Boards />} />
         <Route path="/" element={<SignUp />} />
       </Routes>
     </BrowserRouter>
