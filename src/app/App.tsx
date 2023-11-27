@@ -2,6 +2,7 @@ import { onAuthStateChanged, User } from "firebase/auth"
 import { useEffect, useState } from "react"
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import { ColumnType } from 'widgets/Cards/Card/ui/Card.interface'
+import { useSelector, useDispatch } from "react-redux"
 import { auth } from "shared/api/firebase"
 
 import './styles/index.css'
@@ -10,7 +11,7 @@ import Desktop from "pages/Desktop"
 import TaskModal from "pages/TaskModal"
 import UserPage from "pages/UserPage"
 import SignUp from "pages/SignUp"
-import Boards from "pages/Boards"
+import Boards from "pages/Boards" 
 
 const App = () => {
 
@@ -50,7 +51,7 @@ const App = () => {
       <Routes>
         <Route path="/desktop/taskmodal/:id" element={<TaskModal />} />
         <Route path="/desktop" element={<Desktop initialColumns={initialColumns} />} />
-        <Route path="/user" element={<UserPage/>} />
+        <Route path="/user" element={<UserPage />} />
         <Route path="/boards" element={<Boards />} />
         <Route path="/" element={<SignUp />} />
       </Routes>
@@ -58,4 +59,4 @@ const App = () => {
   )
 }
 
-  export default App
+export default App

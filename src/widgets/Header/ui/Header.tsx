@@ -1,4 +1,6 @@
 import { Link } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+import { RootState } from 'entitles/redux/store'
 import styles from './Header.module.css'
 
 
@@ -7,8 +9,10 @@ import useUser from 'app/providers/UserProvider/useUser'
 
 const Header = () => {
 
-  const { user, logout }: any = useUser()
+  // const { user, logout }: any = useUser()
+const user = useSelector((state:RootState) => state.user.profile)
 
+console.log(user);
 
   return (
     <div className={styles.header}>
@@ -25,7 +29,7 @@ const Header = () => {
             </Link>
 
           </li>
-          <li onClick={logout}>
+          <li>
             <Link to="/">
               <span className={styles.listItem}>
                 Sign Out
@@ -36,7 +40,8 @@ const Header = () => {
           <li>
             <Link to="/user">
               <span className={styles.listItem}>
-                User Page , {user?.displayName}
+                User Page , 
+                {/* {user ? user.displayName : null} */}
               </span>
             </Link>
           </li>

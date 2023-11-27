@@ -13,16 +13,12 @@ import { DesktopProps } from './Desktop.interface'
 
 
 
-const Desktop: FC<DesktopProps> = ({initialColumns}) => {
+const Desktop: FC<DesktopProps> = ({ initialColumns }) => {
   console.log(initialColumns);
-  
+
   return (
     <div className={styles.desktop}>
       <Header />
-
-
-      {/* esi modali patuhanna */}
-      {/* <TaskModal /> */}
       <div className={styles.desktopBody}>
         <div className={styles.desktopHead}>
           <h3 className={styles.desktopTitle}>
@@ -36,7 +32,7 @@ const Desktop: FC<DesktopProps> = ({initialColumns}) => {
             <BsFilter /> <span>Filters</span>
           </div>
         </div>
-        <Cards initialColumns={initialColumns}/>
+        <Cards initialColumns={initialColumns} />
       </div>
     </div>
   )

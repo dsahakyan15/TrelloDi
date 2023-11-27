@@ -1,35 +1,17 @@
 import { FC } from 'react'
 import { FaGithub } from 'react-icons/fa6'
 import styles from './SignInGithub.module.css'
-import { auth } from 'shared/api/firebase'
-import { GithubAuthProvider, signInWithPopup } from 'firebase/auth'
-import useUser from 'app/providers/UserProvider/useUser'
+import { loginWithGithub } from 'entitles/redux/thunks/loginWithGithub.thunk'
+import { useNavigate } from 'react-router-dom'
+import { useAppDispatch } from 'entitles/hooks/useAppDispatch'
 
 const SignInGithub: FC = () => {
-    const { login }: any = useUser()
 
-
+const dispatch = useAppDispatch()
+const navigate = useNavigate()
     const signIn = async () => {
-        const provider = new GithubAuthProvider()
-
-        try {
-            const result = await signInWithPopup(auth, provider)
-            //  TODO chi gali displayName@
-
-            const user = await result.user;
-
-            console.log(user);
-
-            login({
-                uid: user.uid,
-                displayName: user.displayName,
-                email: user.email
-                // eli baner useri
-            })
-
-        } catch (err) {
-            console.log('error with Github auth ', err)
-        }
+        await dispatch(loginWithGithub())
+        navigate('/desktop')
     }
     return (
         <div onClick={signIn} className={styles.github}>
