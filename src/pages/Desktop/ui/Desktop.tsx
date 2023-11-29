@@ -2,7 +2,6 @@ import { FC } from 'react'
 
 import Header from "widgets/Header"
 import Cards from "widgets/Cards"
-import TaskModal from "pages/TaskModal"
 
 import { AiOutlineStar } from 'react-icons/ai'
 import { BsFilter } from 'react-icons/bs'
@@ -14,7 +13,6 @@ import { DesktopProps } from './Desktop.interface'
 
 
 const Desktop: FC<DesktopProps> = ({ initialColumns }) => {
-  console.log(initialColumns);
 
   return (
     <div className={styles.desktop}>
@@ -32,7 +30,7 @@ const Desktop: FC<DesktopProps> = ({ initialColumns }) => {
             <BsFilter /> <span>Filters</span>
           </div>
         </div>
-        <Cards initialColumns={initialColumns} />
+        <Cards initialColumns={initialColumns[0]} />
       </div>
     </div>
   )

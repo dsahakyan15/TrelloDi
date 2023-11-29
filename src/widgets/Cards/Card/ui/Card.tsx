@@ -28,44 +28,46 @@ const Card: FC<CardProps> = ({ col, provided }) => {
                             <FaRegComment /><p className={styles.interNotific}>1</p>
                         </div>
                     </li> */}
-                    <>
-                        {
-                            col.cards.map((card, index) => {
-                                return (
-                                    <Draggable
-                                        key={card.id}
-                                        draggableId={card.id}
-                                        index={index}>
-                                        {
-                                            (provided) => {
-                                                return (
-                                                    <Link to={'/desktop/taskmodal/'+card.id} >
+                    {
+                        col.tasks?.map((card, index) => {
+                            return (
+                                <Draggable
+                                    key={card.id}
+                                    draggableId={card.id}
+                                    index={index}>
+                                    {
+                                        (provided) => {
+                                            return (
+                                                <Link to={'/desktop/taskmodal/' + card.id} >
                                                     <li ref={provided.innerRef}
                                                         {...provided.draggableProps}
                                                         {...provided.dragHandleProps}
                                                         className={styles.cardTask}>
                                                         <span className={styles.cardTaskContent}>
-                                                            {card.content}</span>
-                                                        <div className={styles.inter}>
-                                                            <FaRegComment /><p className={styles.interNotific}>1</p>
-                                                        </div>
+                                                            {card.data}
+                                                        </span>
+                                                        {card.comments?.length ?
+                                                            <div className={styles.inter}>
+                                                                <FaRegComment /><p className={styles.interNotific}>{card.comments.length}</p>
+                                                            </div> : null
+                                                        }
+
                                                     </li>
-                                                    </Link>
+                                                </Link>
 
-                                )
-                            }
+                                            )
                                         }
-                    </Draggable>
-                    )
+                                    }
+                                </Draggable>
+                            )
 
-                            })
-                        }
-                </>
-            </ul>
-            <div className={styles.cardAdd}>
-                <FaPlus /> <span className={styles.addACard}>Add a card</span>
+                        })
+                    }
+                </ul>
+                <div className={styles.cardAdd}>
+                    <FaPlus /> <span className={styles.addACard}>Add a card</span>
+                </div>
             </div>
-        </div>
         </div >
     )
 }

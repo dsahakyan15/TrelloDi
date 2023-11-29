@@ -1,15 +1,7 @@
 import { signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { User } from '../interfaces';
 import { auth } from 'shared/api/firebase'
-
-interface User {
-    uid: string;
-    displayName: string | null;
-    email: string | null;
-    photoURL: string | null;
-}
-
-
 
 
 export const loginWithGoogle = createAsyncThunk(

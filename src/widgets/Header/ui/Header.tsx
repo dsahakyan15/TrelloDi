@@ -4,15 +4,16 @@ import { RootState } from 'entitles/redux/store'
 import styles from './Header.module.css'
 
 
-import useUser from 'app/providers/UserProvider/useUser'
-
 
 const Header = () => {
 
-  // const { user, logout }: any = useUser()
-const user = useSelector((state:RootState) => state.user.profile)
+  const user = useSelector((state: RootState) => {
+    console.log(state);
+    return state.user.profile
+    
+  })
 
-console.log(user);
+  console.log(user);
 
   return (
     <div className={styles.header}>
@@ -40,8 +41,8 @@ console.log(user);
           <li>
             <Link to="/user">
               <span className={styles.listItem}>
-                User Page , 
-                {/* {user ? user.displayName : null} */}
+                User Page ,
+                {user?.displayName}
               </span>
             </Link>
           </li>

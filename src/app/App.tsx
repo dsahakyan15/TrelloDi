@@ -11,52 +11,139 @@ import Desktop from "pages/Desktop"
 import TaskModal from "pages/TaskModal"
 import UserPage from "pages/UserPage"
 import SignUp from "pages/SignUp"
-import Boards from "pages/Boards" 
+import Boards from "pages/Boards"
+import { board } from "entitles/redux/interfaces"
+import SignIn from "pages/SignIn"
 
 const App = () => {
 
-  const initialColumns: ColumnType[] = [
+  const initialColumns: board[] = [
     {
-      id: 'col-1',
-      title: 'To Do',
-      cards: [{ id: 'c-1', content: 'Task 1' }, { id: 'c-2', content: 'Task 2' }, { id: 'c-3', content: 'Task 3' }]
+      title: 'Board Title',
+      id: 'board-12',
+      columns: [
+        {
+          title: 'Column Title',
+          id: 'column-12',
+          tasks: [
+            {
+              title: 'Task Title',
+              id: 'task-12',
+              data: 'Task data',
+              author: {
+                name: 'John Doe',
+                image: 'path/to/image.jpg',
+              },
+              comments: [
+                {
+                  author: {
+                    name: 'John Doe',
+                    image: 'path/to/image.jpg',
+                  },
+                  date: '2023-01-01',
+                  content: 'Comment content',
+                  replyes: [
+                    {
+                      author: {
+                        name: 'John Doe',
+                        image: 'path/to/image.jpg',
+                      },
+                      date: '2023-01-01',
+                      content: 'Reply content',
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+        {
+          title: 'Column Title',
+          id: 'column-123',
+          tasks: [
+            {
+              title: 'Task Title',
+              id: 'task-123',
+              data: 'Task data',
+              author: {
+                name: 'John Doe',
+                image: 'path/to/image.jpg',
+              },
+              comments:[],
+            },
+          ],
+        },
+      ],
     },
     {
-      id: 'col-2',
-      title: 'In Progress',
-      cards: [{ id: 'c-4', content: 'Task 4' }, { id: 'c-5', content: 'Task 5' }, { id: 'c-6', content: 'Task 6' }]
-    },
-    {
-      id: 'col-3',
-      title: 'Done',
-      cards: [{ id: 'c-7', content: 'Task 7' }]
+      title: 'Board Title',
+      id: 'board-123',
+      columns: [
+        {
+          title: 'Column Title',
+          id: 'column-123',
+          tasks: [
+            {
+              title: 'Task Title',
+              id: 'task-123',
+              data: 'Task data',
+              author: {
+                name: 'John Doe',
+                image: 'path/to/image.jpg',
+              },
+              comments: [
+                {
+                  author: {
+                    name: 'John Doe',
+                    image: 'path/to/image.jpg',
+                  },
+                  date: '2023-01-01',
+                  content: 'Comment content',
+                  replyes: [
+                    {
+                      author: {
+                        name: 'John Doe',
+                        image: 'path/to/image.jpg',
+                      },
+                      date: '2023-01-01',
+                      content: 'Reply content',
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+      ],
     }
   ]
 
-  const [userSecond, setUser] = useState<User | null>(null)
+const [userSecond, setUser] = useState<User | null>(null)
+console.log(initialColumns);
 
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, currentUser => {
-      console.log(currentUser)
-      setUser(currentUser)
-    })
+useEffect(() => {
+  const unsubscribe = onAuthStateChanged(auth, currentUser => {
+    console.log(currentUser)
+    setUser(currentUser)
+  })
 
-    return unsubscribe
-  }, [])
+  return unsubscribe
+}, [])
 
 
 
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/desktop/taskmodal/:id" element={<TaskModal />} />
-        <Route path="/desktop" element={<Desktop initialColumns={initialColumns} />} />
-        <Route path="/user" element={<UserPage />} />
-        <Route path="/boards" element={<Boards />} />
-        <Route path="/" element={<SignUp />} />
-      </Routes>
-    </BrowserRouter>
-  )
+return (
+  <BrowserRouter>
+    <Routes>
+      <Route path="/desktop/taskmodal/:id" element={<TaskModal />} />
+      <Route path="/desktop" element={<Desktop initialColumns={initialColumns} />} />
+      <Route path="/user" element={<UserPage />} />
+      <Route path="/boards" element={<Boards />} />
+      <Route path="/signin" element={<SignIn />} />
+      <Route path="/" element={<SignUp />} />
+    </Routes>
+  </BrowserRouter>
+)
 }
 
 export default App

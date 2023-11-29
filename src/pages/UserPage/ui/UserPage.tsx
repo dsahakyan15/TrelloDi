@@ -1,19 +1,18 @@
 import { FC, useState } from 'react'
 import Header from 'widgets/Header'
-import useUser from 'app/providers/UserProvider/useUser'
+import { useSelector } from 'react-redux'
 
 import styles from './UserPage.module.css'
+import { RootState } from 'entitles/redux/store'
 
 const UserPage: FC = () => {
+  const user = useSelector((state: RootState) => {
+    return state.user.profile
+  })
 
-  const { user }: any = useUser()
-  const [usname,setUsname] = useState<string>(user?.displayName)
 
 
-  const handleUsname = (event:React.ChangeEvent<HTMLInputElement>) => {
-    if(event.target.value){
-      setUsname(event.target.value)
-    }
+  const handleUsname = (event: React.ChangeEvent<HTMLInputElement>) => {
 
   }
 
@@ -23,7 +22,9 @@ const UserPage: FC = () => {
       <div className={styles.main}>
         <div className={styles.userInfo}>
           <div className={styles.userAvatar}>
-            <img src="https://img.freepik.com/premium-vector/young-smiling-man-avatar-man-with-brown-beard-mustache-hair-wearing-yellow-sweater-sweatshirt-3d-vector-people-character-illustration-cartoon-minimal-style_365941-860.jpg" alt="avatar" />
+            <img src={user?.photoURL ? user.photoURL :
+              "https://img.freepik.com/premium-vector/young-smiling-man-avatar-man-with-brown-beard-mustache-hair-wearing-yellow-sweater-sweatshirt-3d-vector-people-character-illustration-cartoon-minimal-style_365941-860.jpg"
+            } alt="avatar" />
           </div>
           <div className={styles.userText}>
             <span className={styles.userName}>
@@ -42,7 +43,7 @@ const UserPage: FC = () => {
 
             <div className={styles.bodyUsername}>
               <label htmlFor="username">Username</label>
-              <input type="text" id='username' onChange={handleUsname} value={usname} />
+              <input type="text" id='username' onChange={handleUsname} />
             </div>
             <div className={styles.bodyBio}>
               <label htmlFor="bio">Bio</label>

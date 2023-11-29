@@ -1,14 +1,7 @@
 import { signInWithPopup, GithubAuthProvider } from "firebase/auth";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { auth } from "shared/api/firebase";
-
-interface User {
-    uid: string;
-    displayName: string | null;
-    email: string | null;
-    photoURL: string | null;
-}
-
+import { User } from '../interfaces';
 
 
 

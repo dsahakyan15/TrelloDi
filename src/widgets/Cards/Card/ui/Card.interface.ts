@@ -1,5 +1,5 @@
 
-
+import { column } from "entitles/redux/interfaces";
 
 export interface TaskType {
     id: string;
@@ -13,6 +13,6 @@ export interface ColumnType {
 }
 
 export interface CardProps{
-    col:ColumnType;
+    col:column;
     provided:any;
 }
