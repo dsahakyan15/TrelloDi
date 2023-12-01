@@ -17,7 +17,7 @@ const UserPage: FC = () => {
   }
 
   return (
-    <div>
+    <div className={styles.userPage}>
       <Header />
       <div className={styles.main}>
         <div className={styles.userInfo}>
@@ -28,7 +28,7 @@ const UserPage: FC = () => {
           </div>
           <div className={styles.userText}>
             <span className={styles.userName}>
-              {user?.displayName}
+              {user?.displayName ? user?.displayName : user?.email}
             </span>
             <div className={styles.userTag}>
               {user?.email}
@@ -46,8 +46,8 @@ const UserPage: FC = () => {
               <input type="text" id='username' onChange={handleUsname} />
             </div>
             <div className={styles.bodyBio}>
-              <label htmlFor="bio">Bio</label>
-              <textarea id='bio' />
+              <label htmlFor="imaage">Image</label>
+              <input id='image' type="file" />
             </div>
             <button className={styles.bodyPrimary}>
               Save

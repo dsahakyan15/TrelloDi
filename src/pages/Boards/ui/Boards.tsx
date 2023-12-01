@@ -62,7 +62,7 @@ const Boards: FC = () => {
     }
 
     const handleDeleteBoard = (event: any)=>{
-        event.stopPropagation()
+        // event.stopPropagation() porcel em mekel preventDefault chi ashxatel
         dispatch(deleteBoard(event.target.id))
 
     }
@@ -76,7 +76,7 @@ const Boards: FC = () => {
     }, [])
 
     return (
-        <div>
+        <div className={styles.Boards}>
             <Header />
             <div className={styles.main}>
                 <div className={styles.mainHead}>

@@ -1,3 +1,7 @@
+.userPage{
+  height: 100vh;
+  overflow: auto;
+}
 .main {
   padding: 50px 50px;
 }

@@ -28,6 +28,7 @@ const Cards: FC = () => {
   const boardId = searchParams.get("boardId")
   const dispatch = useAppDispatch();
   const board = useSelector((state: any) => {
+    console.log(state)
     return state.blog.boards.find((board: any) => board.id === boardId)
   })
 
@@ -102,7 +103,7 @@ const Cards: FC = () => {
 
   return (
     <>{
-      loading ?
+      loading || error ?
         <p>Loading...</p>
         :
         <DragDropContext onDragEnd={onDragEnd}>
@@ -127,7 +128,7 @@ const Cards: FC = () => {
               })
             }
 
-            
+
             <div className={styles.newColumn}>
               <span 
               className={styles.plus}>

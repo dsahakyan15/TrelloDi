@@ -133,17 +133,6 @@ const blogSlice = createSlice({
             state.loading = false;
             state.error = action.error.message
         },
-        [createColumn.pending as any]: (state) => {
-            state.loading = true;
-        },
-        [createColumn.fulfilled as any]: (state, action) => {
-            state.loading = false;
-            state.boards.push(action.payload as any)
-        },
-        [createColumn.rejected as any]: (state, action) => {
-            state.loading = false;
-            state.error = action.error.message
-        },
     }
 })
 

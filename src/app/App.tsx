@@ -1,9 +1,4 @@
-import { onAuthStateChanged, User } from "firebase/auth"
-import { useEffect, useState } from "react"
 import { BrowserRouter, Routes, Route } from "react-router-dom"
-import { ColumnType } from 'widgets/Cards/Card/ui/Card.interface'
-import { useSelector, useDispatch } from "react-redux"
-import { auth } from "shared/api/firebase"
 
 import './styles/index.css'
 
@@ -12,7 +7,6 @@ import TaskModal from "pages/TaskModal"
 import UserPage from "pages/UserPage"
 import SignUp from "pages/SignUp"
 import Boards from "pages/Boards"
-import { board } from "entitles/redux/interfaces"
 import SignIn from "pages/SignIn"
 
 const App = () => {
@@ -65,11 +59,11 @@ const App = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/desktop/taskmodal/:id" element={<TaskModal />} />
-        <Route path="/desktop" element={<Desktop />} />
         <Route path="/user" element={<UserPage />} />
         <Route path="/boards" element={<Boards />} />
         <Route path="/signin" element={<SignIn />} />
+        <Route path="/desktop/taskmodal/:id" element={<TaskModal />} />
+        <Route path="/desktop" element={<Desktop />} />
         <Route path="/" element={<SignUp />} />
       </Routes>
     </BrowserRouter>
