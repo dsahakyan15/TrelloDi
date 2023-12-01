@@ -10,7 +10,7 @@ import styles from './Card.module.css'
 import { Draggable } from 'react-beautiful-dnd'
 import { Link } from 'react-router-dom'
 
-const Card: FC<CardProps> = ({ col, provided }) => {
+const Card: FC<CardProps> = ({ col, provided, boardId }) => {
 
     // TODO stex saxi height@ irar heta poxvum
 
@@ -22,29 +22,24 @@ const Card: FC<CardProps> = ({ col, provided }) => {
             </div>
             <div className={styles.cardBody}>
                 <ul className={styles.cardTasks}>
-                    {/* <li className={styles.cardTask}>
-                        <span className={styles.cardTaskContent}>1.Task Desktop</span>
-                        <div className={styles.inter}>
-                            <FaRegComment /><p className={styles.interNotific}>1</p>
-                        </div>
-                    </li> */}
                     {
                         col.tasks?.map((card, index) => {
+
                             return (
                                 <Draggable
-                                    key={card.id}
-                                    draggableId={card.id}
+                                    key={`${index}`}
+                                    draggableId={`${index}`}
                                     index={index}>
                                     {
                                         (provided) => {
                                             return (
-                                                <Link to={'/desktop/taskmodal/' + card.id} >
+                                                <Link to={`/desktop/taskmodal?boardId=${boardId}&taskId=${index}`} >
                                                     <li ref={provided.innerRef}
                                                         {...provided.draggableProps}
                                                         {...provided.dragHandleProps}
                                                         className={styles.cardTask}>
                                                         <span className={styles.cardTaskContent}>
-                                                            {card.data}
+                                                            {card.content}
                                                         </span>
                                                         {card.comments?.length ?
                                                             <div className={styles.inter}>

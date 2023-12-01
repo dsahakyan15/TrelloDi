@@ -47,6 +47,10 @@
 .boards {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
+}
+.boards a {
+  margin: 10px;
 }
 .board {
   max-width: 215px;
@@ -55,14 +59,24 @@
   height: 85px;
   border-radius: 5px;
   padding: 10px;
-  margin: 0 10px;
+  display: flex;
   color: #fff;
   background-color: #0955ed;
 }
+.deleteBoard {
+  margin-left: auto;
+  margin-top: auto;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.deleteBoard:hover {
+  background-color: #A6C5E229;
+}
 .addNew {
   max-width: 215px;
-  
-  padding: 10px ;
+  transition: 0.4s;
+  padding: 10px;
   width: 215px;
   max-height: 85px;
   height: 85px;
@@ -75,6 +89,47 @@
   background-color: #091e4224;
   transition: 185ms;
 }
-.plus{
-    margin: auto;
+.addNewWidget {
+  display: flex;
+  flex-direction: column;
+  max-width: 215px;
+
+  padding: 10px;
+  width: 215px;
+  max-height: 85px;
+  height: 85px;
+  display: flex;
+  background-color: #e6e7e9;
+  border-radius: 5px;
+  margin: 20px 10px;
+}
+.addNewWidget input {
+  border: none;
+  padding: 7px 5px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  cursor: pointer;
+  font-size: 15px;
+}
+.addNewWidget input:focus {
+  outline: none;
+}
+.addNewWidget input:hover {
+  outline: auto;
+}
+.addNewWidget button {
+  background-color: #fff;
+  border: none;
+  padding: 10px 5px;
+  border-radius: 6px;
+  font-size: 15px;
+  cursor: pointer;
+}
+.addNewWidget button:hover {
+  background-color: #5fe27b;
+  color: #fff;
+  transition: 0.3s;
+}
+.plus {
+  margin: auto;
 }

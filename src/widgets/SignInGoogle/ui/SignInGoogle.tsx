@@ -11,7 +11,7 @@ const SignInGoogle: FC = () => {
 
     const signIn = async () => {
         await dispatch(loginWithGoogle())
-        navigate('/desktop')
+        navigate('/boards')
     }
     return (
         <div onClick={signIn} className={styles.google}>

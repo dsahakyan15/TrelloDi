@@ -8,12 +8,9 @@ import styles from './Header.module.css'
 const Header = () => {
 
   const user = useSelector((state: RootState) => {
-    console.log(state);
     return state.user.profile
-    
-  })
 
-  console.log(user);
+  })
 
   return (
     <div className={styles.header}>
@@ -42,7 +39,7 @@ const Header = () => {
             <Link to="/user">
               <span className={styles.listItem}>
                 User Page ,
-                {user?.displayName}
+                {user?.displayName ? user?.displayName : "Anonymous"}
               </span>
             </Link>
           </li>

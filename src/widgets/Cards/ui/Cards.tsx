@@ -1,17 +1,19 @@
 import { FC, useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { useSearchParams } from 'react-router-dom'
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
+import { FaPlus } from 'react-icons/fa6'
 import Card from '../Card'
-import { fetchBoards } from "entitles/redux/boardsSlice"
-import { useSelector } from 'react-redux';
-import { useAppDispatch } from 'entitles/hooks/useAppDispatch';
 import { column, task } from 'entitles/redux/interfaces';
 
 
-import { CardsProps } from './Cards.interface'
 import styles from './Cards.module.css'
 import { RootState } from 'entitles/redux/store';
 
+
+
+import { fetchBoard } from "entitles/redux/blogSlice"
+import { useSelector } from 'react-redux';
+import { useAppDispatch } from 'entitles/hooks/useAppDispatch';
 
 interface ColumnType {
   id: string;
@@ -20,31 +22,30 @@ interface ColumnType {
 }
 
 
-const Cards: FC<CardsProps> = ({ initialColumns }) => {
+const Cards: FC = () => {
 
+  const [searchParams] = useSearchParams()
+  const boardId = searchParams.get("boardId")
   const dispatch = useAppDispatch();
-  const boards = useSelector((state: RootState) => {
-    return state.boards
+  const board = useSelector((state: any) => {
+    return state.blog.boards.find((board: any) => board.id === boardId)
   })
 
   const loading = useSelector((state: RootState) => {
-    return state.boards.loading
+    return state.blog.loading
   })
 
   const error = useSelector((state: RootState) => {
-    return state.boards.error
+    return state.blog.error
   })
   useEffect(() => {
-    dispatch(fetchBoards())
-    if(boards.error){
-
+    if (boardId && !board) {
+      dispatch(fetchBoard(boardId))
     }
-    boards.error ? console.log(error, '-----') : console.log(boards);
-    
+  }, [dispatch, board, boardId])
 
-  }, [dispatch])
 
-  const [columns, setColumns] = useState<column[] | null>(initialColumns.columns);
+  const [columns, setColumns] = useState<column[]>(board?.columns as column[]);
 
 
   const onDragEnd = (result: any) => {
@@ -100,30 +101,48 @@ const Cards: FC<CardsProps> = ({ initialColumns }) => {
 
 
   return (
-    <DragDropContext onDragEnd={onDragEnd}>
-      <div className={styles.tasks}>
-        {
-          columns?.map((col, index) => {
-            return (
-              <Droppable droppableId={col.id} key={col.id}>
-                {
-                  (provided) => {
-                    return (
-                      <Card
-                        provided={provided}
-                        col={col}
-                      />
-                    )
-                  }
-                }
-              </Droppable>
-            )
-          })
-        }
-        <Link to="/desktop/taskmodal/1">
-        </Link>
-      </div>
-    </DragDropContext>
+    <>{
+      loading ?
+        <p>Loading...</p>
+        :
+        <DragDropContext onDragEnd={onDragEnd}>
+          <div className={styles.tasks}>
+            {
+              columns?.map((col, index) => {
+                return (
+                  <Droppable droppableId={`${index}`} key={`${index}`}>
+                    {
+                      (provided) => {
+                        return (
+                          <Card
+                            provided={provided}
+                            col={col}
+                            boardId={boardId}
+                          />
+                        )
+                      }
+                    }
+                  </Droppable>
+                )
+              })
+            }
+
+            
+            <div className={styles.newColumn}>
+              <span 
+              className={styles.plus}>
+                <FaPlus />
+              </span>
+              <span 
+              className={styles.newColumnText}>
+                Add another list
+              </span>
+            </div>
+          </div>
+
+        </DragDropContext>
+
+    }</>
 
   )
 }

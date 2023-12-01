@@ -23,14 +23,14 @@ export interface comment {
     author: author;
     date: string;
     content: string;
-    replyes:reply[] | null;
+    replyes: reply[] | null;
 }
 export interface task {
     title: string;
     id: string;
-    data: string;
-    author:author;
-    comments:comment[] | null;
+    content: string;
+    author: author;
+    comments: comment[] | null;
 }
 export interface column {
     title: string;
@@ -40,54 +40,13 @@ export interface column {
 
 export interface board {
     title: string;
-    id: string;
+    id?: string;
     columns: column[] | null;
 }
 export interface boardsInitialStateProps {
     boards: board[];
-    loading:boolean;
-    error:any;
+    loading: boolean;
+    error: any;
 }
 
-// boards page[
-//     board{
-//         title:string,
-//         id:string,
-//         columns:arr[
-//             column :obj{
-//             title:string,
-//             tasks: [
-//                 task: obj{
-//                     title: string,
-//                     data: timeStamp,
-//                     author{
-//                     name: string,
-//                     photoURL: string,
-//                 },
-//                 comments[
-//                 author{
-//                     name: string,
-//                     photoURL: string,
-//                 },
-//                 date: timeStamp,
-//                 content: string,
-//                 replyes: [
-//                     author{
-//                         name: string,
-//                         photoURL: string,
-//                     },
-//                     date: timeStamp,
-//                     content: string,
-//                 ]
-//             ]
-//         }
-//             ]
-//             },
-// { }
-// ]
-//     },
-// {
-
-// }
-// ]
 

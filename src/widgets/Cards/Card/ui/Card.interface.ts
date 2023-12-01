@@ -12,7 +12,8 @@ export interface ColumnType {
     cards: TaskType[];
 }
 
-export interface CardProps{
-    col:column;
-    provided:any;
+export interface CardProps {
+    col: column;
+    provided: any;
+    boardId: string | null;
 }

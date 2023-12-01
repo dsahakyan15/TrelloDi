@@ -12,16 +12,22 @@ import { signupWithEmailAndPass } from "entitles/redux/thunks/signupWithEmailAnd
 const SignUp: FC = () => {
     const [email, setEmail] = useState<string>('')
     const [pass, setPass] = useState<string>('')
+    const [error, setError] = useState<string>('')
     const dispatch = useAppDispatch()
     const navigate = useNavigate()
 
-    const signup = async () => {
-        await dispatch(signupWithEmailAndPass({  email, pass, auth}))
-        // navigate('/desktop')
-    }
 
-    const signInMethod = () => {
-        signup()
+    const signUpMethod = async () => {
+        try {
+            await dispatch(signupWithEmailAndPass({ email, pass, auth }))
+
+        } catch (e) {
+            setError(e as string)
+        }
+        if (!error) {
+            navigate('/boards')
+        }
+
     }
 
     return (
@@ -47,7 +53,7 @@ const SignUp: FC = () => {
                             id="password" />
                     </div>
                     <button
-                        onClick={signInMethod}
+                        onClick={signUpMethod}
                         className={styles.formBtn}>Le`go</button>
                     <Link to="signin">
                         <span className={styles.signIn}>

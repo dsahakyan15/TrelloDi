@@ -17,133 +17,63 @@ import SignIn from "pages/SignIn"
 
 const App = () => {
 
-  const initialColumns: board[] = [
-    {
-      title: 'Board Title',
-      id: 'board-12',
-      columns: [
-        {
-          title: 'Column Title',
-          id: 'column-12',
-          tasks: [
-            {
-              title: 'Task Title',
-              id: 'task-12',
-              data: 'Task data',
-              author: {
-                name: 'John Doe',
-                image: 'path/to/image.jpg',
-              },
-              comments: [
-                {
-                  author: {
-                    name: 'John Doe',
-                    image: 'path/to/image.jpg',
-                  },
-                  date: '2023-01-01',
-                  content: 'Comment content',
-                  replyes: [
-                    {
-                      author: {
-                        name: 'John Doe',
-                        image: 'path/to/image.jpg',
-                      },
-                      date: '2023-01-01',
-                      content: 'Reply content',
-                    },
-                  ],
-                },
-              ],
-            },
-          ],
-        },
-        {
-          title: 'Column Title',
-          id: 'column-123',
-          tasks: [
-            {
-              title: 'Task Title',
-              id: 'task-123',
-              data: 'Task data',
-              author: {
-                name: 'John Doe',
-                image: 'path/to/image.jpg',
-              },
-              comments:[],
-            },
-          ],
-        },
-      ],
-    },
-    {
-      title: 'Board Title',
-      id: 'board-123',
-      columns: [
-        {
-          title: 'Column Title',
-          id: 'column-123',
-          tasks: [
-            {
-              title: 'Task Title',
-              id: 'task-123',
-              data: 'Task data',
-              author: {
-                name: 'John Doe',
-                image: 'path/to/image.jpg',
-              },
-              comments: [
-                {
-                  author: {
-                    name: 'John Doe',
-                    image: 'path/to/image.jpg',
-                  },
-                  date: '2023-01-01',
-                  content: 'Comment content',
-                  replyes: [
-                    {
-                      author: {
-                        name: 'John Doe',
-                        image: 'path/to/image.jpg',
-                      },
-                      date: '2023-01-01',
-                      content: 'Reply content',
-                    },
-                  ],
-                },
-              ],
-            },
-          ],
-        },
-      ],
-    }
-  ]
-
-const [userSecond, setUser] = useState<User | null>(null)
-console.log(initialColumns);
-
-useEffect(() => {
-  const unsubscribe = onAuthStateChanged(auth, currentUser => {
-    console.log(currentUser)
-    setUser(currentUser)
-  })
-
-  return unsubscribe
-}, [])
+  // const initialColumns: board[] = [
+  //   {
+  //     title: 'Board Title',
+  //     id: 'board-12',
+  //     columns: [
+  //       {
+  //         title: 'Column Title',
+  //         id: 'column-12',
+  //         tasks: [
+  //           {
+  //             title: 'Task Title',
+  //             id: 'task-12',
+  //             content: 'Task data',
+  //             author: {
+  //               name: 'John Doe',
+  //               image: 'path/to/image.jpg',
+  //             },
+  //             comments: [
+  //               {
+  //                 author: {
+  //                   name: 'John Doe',
+  //                   image: 'path/to/image.jpg',
+  //                 },
+  //                 date: '2023-01-01',
+  //                 content: 'Comment content',
+  //                 replyes: [
+  //                   {
+  //                     author: {
+  //                       name: 'John Doe',
+  //                       image: 'path/to/image.jpg',
+  //                     },
+  //                     date: '2023-01-01',
+  //                     content: 'Reply content',
+  //                   },
+  //                 ],
+  //               },
+  //             ],
+  //           },
+  //         ],
+  //       }
+  //     ],
+  //   }
+  // ]
 
 
-
-return (
-  <BrowserRouter>
-    <Routes>
-      <Route path="/desktop/taskmodal/:id" element={<TaskModal />} />
-      <Route path="/desktop" element={<Desktop initialColumns={initialColumns} />} />
-      <Route path="/user" element={<UserPage />} />
-      <Route path="/boards" element={<Boards />} />
-      <Route path="/signin" element={<SignIn />} />
-      <Route path="/" element={<SignUp />} />
-    </Routes>
-  </BrowserRouter>
-)
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/desktop/taskmodal/:id" element={<TaskModal />} />
+        <Route path="/desktop" element={<Desktop />} />
+        <Route path="/user" element={<UserPage />} />
+        <Route path="/boards" element={<Boards />} />
+        <Route path="/signin" element={<SignIn />} />
+        <Route path="/" element={<SignUp />} />
+      </Routes>
+    </BrowserRouter>
+  )
 }
 
 export default App

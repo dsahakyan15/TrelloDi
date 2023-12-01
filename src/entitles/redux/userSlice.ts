@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit"
 import { loginWithGoogle } from "./thunks/loginWithGoogle.thunk";
 import { loginWithGithub } from "./thunks/loginWithGithub.thunk";
 import { signupWithEmailAndPass } from "./thunks/signupWithEmailAndPass";
+import { signinWithEmailAndPass } from "./thunks/signinWithEmailAndPass";
 import { userInitialStateProps } from './interfaces'
 
 
@@ -46,6 +47,17 @@ const userSlice = createSlice({
             state.profile = action.payload
         },
         [signupWithEmailAndPass.rejected as any]: (state, error) => {
+            state.loading = false
+            state.error = error.payload;
+        },
+        [signinWithEmailAndPass.pending as any]: (state) => {
+            state.loading = true;
+        },
+        [signinWithEmailAndPass.fulfilled as any]: (state, action) => {
+            state.loading = false;
+            state.profile = action.payload
+        },
+        [signinWithEmailAndPass.rejected as any]: (state, error) => {
             state.loading = false
             state.error = error.payload;
         },

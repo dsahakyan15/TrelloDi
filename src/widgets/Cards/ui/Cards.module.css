@@ -1,4 +1,20 @@
 .tasks {
   display: flex;
-  padding: 10px; 
+  padding: 10px;
+}
+.newColumn {
+  display: flex;
+  background-color: #ffffff70;
+  color: #fff;
+  padding: 20px 70px 20px 20px;
+  border-radius: 5px;
+  height: min-content;
+  margin: 5px;
+  transition: 0.3s;
+}
+.newColumn:hover {
+  background-color: #a6c5e252;
+}
+.newColumnText {
+  margin-left: 10px;
 }

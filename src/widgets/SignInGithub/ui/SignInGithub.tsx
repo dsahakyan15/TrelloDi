@@ -11,7 +11,7 @@ const dispatch = useAppDispatch()
 const navigate = useNavigate()
     const signIn = async () => {
         await dispatch(loginWithGithub())
-        navigate('/desktop')
+        navigate('/boards')
     }
     return (
         <div onClick={signIn} className={styles.github}>
