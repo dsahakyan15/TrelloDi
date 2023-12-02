@@ -14,7 +14,6 @@ const Card: FC<CardProps> = ({ col, provided, boardId }) => {
 
     // TODO stex saxi height@ irar heta poxvum
 
-    debugger
     return (
         <div className={styles.card} {...provided.droppableProps} ref={provided.innerRef}>
             <div className={styles.cardHead}>

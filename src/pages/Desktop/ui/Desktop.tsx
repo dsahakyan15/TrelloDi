@@ -53,10 +53,6 @@ const Desktop: FC = () => {
           <div className={styles.toStar}>
             <AiOutlineStar />
           </div>
-          <div className={styles.cardsFilter}>
-            <BsFilter /> 
-            <span>Filters</span>
-          </div>
         </div>
         <Cards />
       </div>

@@ -85,7 +85,8 @@ export const createColumn = createAsyncThunk(
         }
         dataTemp.columns.push({
             tasks: items.tasks,
-            title: items.title
+            title: items.title,
+            id: boardRef.id
         })
 
         await updateDoc(boardRef, {
@@ -118,7 +119,6 @@ const blogSlice = createSlice({
         },
         [fetchBoards.fulfilled as any]: (state, action) => {
             state.loading = false;
-            debugger
             state.boards = action.payload;
         },
         [fetchBoards.rejected as any]: (state, action) => {
@@ -132,7 +132,6 @@ const blogSlice = createSlice({
         
             state.loading = false;
             state.boards = action.payload.columns
-            debugger
             // const existsBoard = state.boards.find(
             //     (post: any) => post?.id === action.payload?.id
             // );

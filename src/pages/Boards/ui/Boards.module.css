@@ -54,10 +54,10 @@
   flex-wrap: wrap;
 }
 .boards a {
-  margin: 10px;
 }
 .board {
   max-width: 215px;
+  margin: 10px;
   width: 215px;
   max-height: 85px;
   height: 85px;
@@ -68,11 +68,13 @@
   background-color: #0955ed;
 }
 .deleteBoard {
-  margin-left: auto;
-  margin-top: auto;
+  margin: 0 0 0 20px;
+  position: absolute;
+  bottom: 170px;
   padding: 10px;
   border-radius: 5px;
   cursor: pointer;
+  color:#fff;
 }
 .deleteBoard:hover {
   background-color: #A6C5E229;

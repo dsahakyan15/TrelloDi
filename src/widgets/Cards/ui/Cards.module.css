@@ -1,6 +1,7 @@
 .tasks {
   display: flex;
-  padding: 10px;
+  padding: 10px 10px 300px;
+  overflow-x: auto;
 }
 .newColumn {
   display: flex;

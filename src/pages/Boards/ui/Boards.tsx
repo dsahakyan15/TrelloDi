@@ -12,6 +12,10 @@ import { RootState } from 'entitles/redux/store'
 
 
 const Boards: FC = () => {
+    const user = useSelector((state: RootState) => {
+        return state.user.profile
+    })
+
     const [addWidget, setAddWidget] = useState<Boolean>(false)
     const [addInputValue, setAddInputValue] = useState<string>('')
 
@@ -61,10 +65,9 @@ const Boards: FC = () => {
 
     }
 
-    const handleDeleteBoard = (event: any)=>{
-        // event.stopPropagation() porcel em mekel preventDefault chi ashxatel
+    const handleDeleteBoard = (event: any) => {
         dispatch(deleteBoard(event.target.id))
-
+        debugger
     }
 
     useEffect(() => {
@@ -81,10 +84,12 @@ const Boards: FC = () => {
             <div className={styles.main}>
                 <div className={styles.mainHead}>
                     <div className={styles.headAvatar}>
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/1200px-Image_created_with_a_mobile_phone.png" alt="Avatar" />
+                        <img src={user?.photoURL ? user.photoURL :
+                            "https://img.freepik.com/premium-vector/young-smiling-man-avatar-man-with-brown-beard-mustache-hair-wearing-yellow-sweater-sweatshirt-3d-vector-people-character-illustration-cartoon-minimal-style_365941-860.jpg"
+                        } alt="avatar" />
                     </div>
                     <div className={styles.head}>
-                        <h2>davitsahakyan373</h2>
+                        <h2>{user?.displayName ? user?.displayName : user?.email}</h2>
                     </div>
                 </div>
                 <div className={styles.table}>
@@ -118,18 +123,21 @@ const Boards: FC = () => {
 
                                     <>{
                                         boards.map((board) => (
-                                            <Link key={board.id} to={`/desktop?boardId=${board.id}`}>
+                                            <div>
+                                                <Link key={board.id} to={`/desktop?boardId=${board.id}`}>
+                                                    <div
+                                                        className={styles.board}>
+                                                        <span>{board.title}</span>
+                                                    </div>
+                                                </Link>
                                                 <div
-                                                    className={styles.board}>
-                                                    <span>{board.title}</span>
-                                                    <div 
-                                                    onClick={(e)=>handleDeleteBoard(e)}
+                                                    onClick={(e) => handleDeleteBoard(e)}
                                                     id={board.id}
                                                     className={styles.deleteBoard}>
-                                                        <FaRegTrashCan />
-                                                    </div>
+                                                    <FaRegTrashCan />
                                                 </div>
-                                            </Link>
+                                            </div>
+
                                         ))
                                     }
                                     </>

@@ -40,18 +40,18 @@ const Cards: FC = () => {
   })
   useEffect(() => {
     if (boardId && !board) {
-      dispatch(fetchBoard({boardId}))
+      dispatch(fetchBoard({ boardId }))
     }
   }, [dispatch, board, boardId])
 
-const temp = useSelector((state: RootState)=>state.blog.boards)
-debugger
+  const temp = useSelector((state: RootState) => state.blog)
   const [columns, setColumns] = useState<column[]>(board?.columns as column[]);
-  console.log(columns);
-  
-  useEffect(()=>{
-    // setColumns(temp)
-  },[temp])
+  console.log(temp);
+
+  useEffect(() => {
+    setColumns(board?.columns as column[])
+    console.log(1)
+  }, [temp])
   const [isAddTask, setIsAddTask] = useState<Boolean>(false)
   const [newColNameValue, setNewColNameValue] = useState<string>('')
 
@@ -59,15 +59,14 @@ debugger
     setNewColNameValue(event.target.value)
   }
   const addNewCol = async () => {
-    // debugger
     if (newColNameValue.trim()) {
-     await dispatch(createColumn({
+      await dispatch(createColumn({
         title: newColNameValue,
         tasks: [],
-        boardId:boardId
+        boardId: boardId
       }))
-      if(boardId)
-     await dispatch(fetchBoard({boardId}))
+      if (boardId)
+        await dispatch(fetchBoard({ boardId }))
 
       setNewColNameValue('')
       setIsAddTask(false)
@@ -135,8 +134,7 @@ debugger
           <div className={styles.tasks}>
             {
               columns?.map((col, index) => {
-                debugger
-                
+
                 return (
                   <Droppable droppableId={`${index}`} key={`${index}`}>
                     {
@@ -156,7 +154,7 @@ debugger
             }
 
             {
-              !isAddTask ?
+              isAddTask ?
                 <div className={styles.newColumnOpened}>
                   <input
                     onChange={onNewColNamed}

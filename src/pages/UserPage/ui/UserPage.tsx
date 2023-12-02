@@ -43,15 +43,19 @@ const UserPage: FC = () => {
 
             <div className={styles.bodyUsername}>
               <label htmlFor="username">Username</label>
-              <input type="text" id='username' onChange={handleUsname} />
+              <h3>{user?.displayName ? user?.displayName : "Anonymous"}</h3>
+            </div>
+
+            <div className={styles.bodyUsername}>
+              <label htmlFor="username">Email</label>
+              <h3>{user?.email}</h3>
             </div>
             <div className={styles.bodyBio}>
               <label htmlFor="imaage">Image</label>
-              <input id='image' type="file" />
+              <img src={user?.photoURL ? user.photoURL :
+                "https://img.freepik.com/premium-vector/young-smiling-man-avatar-man-with-brown-beard-mustache-hair-wearing-yellow-sweater-sweatshirt-3d-vector-people-character-illustration-cartoon-minimal-style_365941-860.jpg"
+              } alt="avatar" />
             </div>
-            <button className={styles.bodyPrimary}>
-              Save
-            </button>
 
           </div>
         </div>
