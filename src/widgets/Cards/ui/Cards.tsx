@@ -11,7 +11,7 @@ import { RootState } from 'entitles/redux/store';
 
 
 
-import { fetchBoard } from "entitles/redux/blogSlice"
+import { createColumn, fetchBoard, fetchBoards } from "entitles/redux/blogSlice"
 import { useSelector } from 'react-redux';
 import { useAppDispatch } from 'entitles/hooks/useAppDispatch';
 
@@ -28,8 +28,7 @@ const Cards: FC = () => {
   const boardId = searchParams.get("boardId")
   const dispatch = useAppDispatch();
   const board = useSelector((state: any) => {
-    console.log(state)
-    return state.blog.boards.find((board: any) => board.id === boardId)
+    return state.blog.boards.find((board: any) => board?.id === boardId)
   })
 
   const loading = useSelector((state: RootState) => {
@@ -41,14 +40,40 @@ const Cards: FC = () => {
   })
   useEffect(() => {
     if (boardId && !board) {
-      dispatch(fetchBoard(boardId))
+      dispatch(fetchBoard({boardId}))
     }
   }, [dispatch, board, boardId])
 
-
+const temp = useSelector((state: RootState)=>state.blog.boards)
+debugger
   const [columns, setColumns] = useState<column[]>(board?.columns as column[]);
+  console.log(columns);
+  
+  useEffect(()=>{
+    // setColumns(temp)
+  },[temp])
+  const [isAddTask, setIsAddTask] = useState<Boolean>(false)
+  const [newColNameValue, setNewColNameValue] = useState<string>('')
 
+  const onNewColNamed = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setNewColNameValue(event.target.value)
+  }
+  const addNewCol = async () => {
+    // debugger
+    if (newColNameValue.trim()) {
+     await dispatch(createColumn({
+        title: newColNameValue,
+        tasks: [],
+        boardId:boardId
+      }))
+      if(boardId)
+     await dispatch(fetchBoard({boardId}))
 
+      setNewColNameValue('')
+      setIsAddTask(false)
+    }
+
+  }
   const onDragEnd = (result: any) => {
     const { source, destination } = result;
 
@@ -104,12 +129,14 @@ const Cards: FC = () => {
   return (
     <>{
       loading || error ?
-        <p>Loading...</p>
+        <p>Loading... {error ? error : null}</p>
         :
         <DragDropContext onDragEnd={onDragEnd}>
           <div className={styles.tasks}>
             {
-              columns?.map((col, index) => {
+              temp.map((col, index) => {
+                debugger
+                
                 return (
                   <Droppable droppableId={`${index}`} key={`${index}`}>
                     {
@@ -128,17 +155,31 @@ const Cards: FC = () => {
               })
             }
 
-
-            <div className={styles.newColumn}>
-              <span 
-              className={styles.plus}>
-                <FaPlus />
-              </span>
-              <span 
-              className={styles.newColumnText}>
-                Add another list
-              </span>
-            </div>
+            {
+              !isAddTask ?
+                <div className={styles.newColumnOpened}>
+                  <input
+                    onChange={onNewColNamed}
+                    value={newColNameValue}
+                    placeholder='Add new Column'
+                    type="text" />
+                  <button
+                    onClick={addNewCol}>Create</button>
+                </div>
+                :
+                <div
+                  onClick={() => setIsAddTask(true)}
+                  className={styles.newColumn}>
+                  <span
+                    className={styles.plus}>
+                    <FaPlus />
+                  </span>
+                  <span
+                    className={styles.newColumnText}>
+                    Add another list
+                  </span>
+                </div>
+            }
           </div>
 
         </DragDropContext>

@@ -52,7 +52,7 @@ const Boards: FC = () => {
             dispatch(
                 createBoard({
                     title: addInputValue,
-                    columns: null
+                    columns: []
                 })
             );
             setAddInputValue('')

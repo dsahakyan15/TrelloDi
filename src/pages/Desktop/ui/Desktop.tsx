@@ -25,7 +25,7 @@ const Desktop: FC = () => {
   const dispatch = useAppDispatch();
 
   const board = useSelector((state: any) => {
-    return state.blog.boards.find((board: any) => board.id === boardId)
+    return state.blog.boards.find((board: any) => board?.id === boardId)
   })
   const loading = useSelector((state: RootState) => {
     return state.blog.loading
@@ -36,7 +36,7 @@ const Desktop: FC = () => {
   })
   useEffect(() => {
     if (boardId && !board) {
-      dispatch(fetchBoard(boardId))
+      dispatch(fetchBoard({boardId}))
     }
   }, [dispatch, board, boardId])
 

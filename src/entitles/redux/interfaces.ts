@@ -34,8 +34,8 @@ export interface task {
 }
 export interface column {
     title: string;
-    id: string;
-    tasks: task[] | null;
+    // id: string;
+    tasks: task[];
 }
 
 export interface board {

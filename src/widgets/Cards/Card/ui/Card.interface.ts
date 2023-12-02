@@ -13,7 +13,7 @@ export interface ColumnType {
 }
 
 export interface CardProps {
-    col: column;
+    col: column | null;
     provided: any;
     boardId: string | null;
 }

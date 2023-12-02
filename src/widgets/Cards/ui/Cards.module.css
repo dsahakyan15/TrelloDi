@@ -18,3 +18,33 @@
 .newColumnText {
   margin-left: 10px;
 }
+.newColumnOpened{
+  transition: 0.4s;
+  padding: 10px;
+  width: 215px;
+  display: flex;
+  flex-direction: column;
+  background-color: #e6e7e9;
+  border-radius: 5px;
+}
+.newColumnOpened input {
+  background-color: #fff;
+  border:none;
+  border-radius:5px;
+  padding: 7px;
+  margin-bottom: 10px;
+  font-size: 15px;
+}
+.newColumnOpened button {
+   background-color: #fff;
+  border: none;
+  padding: 10px 5px;
+  border-radius: 6px;
+  font-size: 15px;
+  cursor: pointer;
+}
+.newColumnOpened button:hover {
+  background-color: #5fe27b;
+  color: #fff;
+  transition: 0.3s;
+}
