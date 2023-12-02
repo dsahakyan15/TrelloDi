@@ -131,7 +131,6 @@ const blogSlice = createSlice({
         [fetchBoard.fulfilled as any]: (state, action) => {
         
             state.loading = false;
-            debugger
             state.boards = action.payload.columns
             debugger
             // const existsBoard = state.boards.find(

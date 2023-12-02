@@ -134,7 +134,7 @@ debugger
         <DragDropContext onDragEnd={onDragEnd}>
           <div className={styles.tasks}>
             {
-              temp.map((col, index) => {
+              columns?.map((col, index) => {
                 debugger
                 
                 return (

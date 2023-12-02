@@ -34,7 +34,7 @@ export interface task {
 }
 export interface column {
     title: string;
-    // id: string;
+    id: string;
     tasks: task[];
 }
 
