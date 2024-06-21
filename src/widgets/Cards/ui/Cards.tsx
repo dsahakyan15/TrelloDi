@@ -1,5 +1,4 @@
-import { FC, useState, useEffect } from 'react'
-import { useSearchParams } from 'react-router-dom'
+import { FC, useState } from 'react'
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 import { FaPlus } from 'react-icons/fa6'
 import Card from '../Card'
@@ -9,11 +8,7 @@ import { column, task } from 'entitles/redux/interfaces';
 import styles from './Cards.module.css'
 import { RootState } from 'entitles/redux/store';
 
-
-
-import { createColumn, fetchBoard, fetchBoards } from "entitles/redux/blogSlice"
 import { useSelector } from 'react-redux';
-import { useAppDispatch } from 'entitles/hooks/useAppDispatch';
 
 interface ColumnType {
   id: string;
@@ -24,13 +19,6 @@ interface ColumnType {
 
 const Cards: FC = () => {
 
-  const [searchParams] = useSearchParams()
-  const boardId = searchParams.get("boardId")
-  const dispatch = useAppDispatch();
-  const board = useSelector((state: any) => {
-    return state.blog.boards.find((board: any) => board?.id === boardId)
-  })
-
   const loading = useSelector((state: RootState) => {
     return state.blog.loading
   })
@@ -38,41 +26,87 @@ const Cards: FC = () => {
   const error = useSelector((state: RootState) => {
     return state.blog.error
   })
-  useEffect(() => {
-    if (boardId && !board) {
-      dispatch(fetchBoard({ boardId }))
-    }
-  }, [dispatch, board, boardId])
+  const initialColumns = [
+    {
+      "title": "Anush",
+      "id": "0",
+      "tasks": [
+        {
+          "content": "Task Data",
+          "title": "Task Title",
+          "comments": [""],
+          "id": "0",
+          "author": {
+            "name": "",
+            "image": ""
+          }
+        }]
+    },
+    {
+      "title": "Anush",
+      "id": "1",
+      "tasks": [
+        {
+          "content": "Task Data",
+          "title": "Task Title",
+          "comments": [""],
+          "id": "0",
+          "author": {
+            "name": "",
+            "image": ""
+          },
+        },
+        {
+          "content": "Task Data--2",
+          "title": "Task Title",
+          "comments": [""],
+          "id": "1",
+          "author": {
+            "name": "",
+            "image": ""
+          },
+        }
+      ]
+    },
+    {
+      "title": "Anush",
+      "id": "2",
+      "tasks": [
+        {
+          "content": "Task Data",
+          "title": "Task Title",
+          "comments": [""],
+          "id": "0",
+          "author": {
+            "name": "",
+            "image": ""
+          }
+        }]
+    },
+  ]
+  const [columns, setColumns] = useState<column[]>(initialColumns as column[]);
 
-  const temp = useSelector((state: RootState) => state.blog)
-  const [columns, setColumns] = useState<column[]>(board?.columns as column[]);
-  console.log(temp);
-
-  useEffect(() => {
-    setColumns(board?.columns as column[])
-    console.log(1)
-  }, [temp])
   const [isAddTask, setIsAddTask] = useState<Boolean>(false)
   const [newColNameValue, setNewColNameValue] = useState<string>('')
 
   const onNewColNamed = (event: React.ChangeEvent<HTMLInputElement>) => {
     setNewColNameValue(event.target.value)
   }
-  const addNewCol = async () => {
-    if (newColNameValue.trim()) {
-      await dispatch(createColumn({
-        title: newColNameValue,
-        tasks: [],
-        boardId: boardId
-      }))
-      if (boardId)
-        await dispatch(fetchBoard({ boardId }))
+  // const addNewCol = async () => {
+  //   if (newColNameValue.trim()) {
+  //     await dispatch(createColumn({
+  //       title: newColNameValue,
+  //       tasks: [],
+  //       boardId: boardId
+  //     }))
+  //     if (boardId)
+  //       await dispatch(fetchBoard({ boardId }))
 
-      setNewColNameValue('')
-      setIsAddTask(false)
-    }
+  //     setNewColNameValue('')
+  //     setIsAddTask(false)
+  //   }
 
-  }
+  // }
   const onDragEnd = (result: any) => {
     const { source, destination } = result;
 
@@ -98,7 +132,6 @@ const Cards: FC = () => {
         tasks: newSourceCards,
       };
 
-      if (columns)
         setColumns(columns.map(column => column.id === newColumn.id ? newColumn : column))
     } else {
       const newDestinationCards: task[] = Array.from(destinationColumn.tasks);
@@ -114,8 +147,8 @@ const Cards: FC = () => {
         ...destinationColumn,
         tasks: newDestinationCards
       }
-      // TODO
-      if (columns)
+
+
         setColumns(columns.map(column => {
           if (column.id === newSourceColumn.id) return newSourceColumn;
           if (column.id === newDestinationColumn.id) return newDestinationColumn;
@@ -123,8 +156,6 @@ const Cards: FC = () => {
         }))
     }
   }
-
-
   return (
     <>{
       loading || error ?
@@ -136,14 +167,13 @@ const Cards: FC = () => {
               columns?.map((col, index) => {
 
                 return (
-                  <Droppable droppableId={`${index}`} key={`${index}`}>
+                  <Droppable droppableId={col.id} key={col.id}>
                     {
                       (provided) => {
                         return (
                           <Card
                             provided={provided}
                             col={col}
-                            boardId={boardId}
                           />
                         )
                       }
@@ -161,8 +191,7 @@ const Cards: FC = () => {
                     value={newColNameValue}
                     placeholder='Add new Column'
                     type="text" />
-                  <button
-                    onClick={addNewCol}>Create</button>
+                  <button>Create</button>
                 </div>
                 :
                 <div

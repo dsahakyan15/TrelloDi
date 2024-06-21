@@ -10,7 +10,7 @@ import styles from './Card.module.css'
 import { Draggable } from 'react-beautiful-dnd'
 import { Link } from 'react-router-dom'
 
-const Card: FC<CardProps> = ({ col, provided, boardId }) => {
+const Card: FC<CardProps> = ({ col, provided}) => {
 
     // TODO stex saxi height@ irar heta poxvum
 
@@ -28,13 +28,13 @@ const Card: FC<CardProps> = ({ col, provided, boardId }) => {
 
                             return (
                                 <Draggable
-                                    key={`${index}`}
-                                    draggableId={`${index}`}
+                                    key={col.id}
+                                    draggableId={col.id}
                                     index={index}>
                                     {
                                         (provided) => {
                                             return (
-                                                <Link to={`/desktop/taskmodal?boardId=${boardId}&taskId=${index}`} >
+                                                <Link to={`/desktop/taskmodal`} >
                                                     <li ref={provided.innerRef}
                                                         {...provided.draggableProps}
                                                         {...provided.dragHandleProps}

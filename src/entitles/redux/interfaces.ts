@@ -30,7 +30,7 @@ export interface task {
     id: string;
     content: string;
     author: author;
-    comments: comment[] | null;
+    comments: comment[] | string[];
 }
 export interface column {
     title: string;
