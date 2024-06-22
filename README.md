@@ -1,6 +1,29 @@
-# Getting Started with Create React App
+# TrelloDi ,the app like Trello but not completely :)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This app was wrotten in React framework,and use Firebase(for saving,getting & redacting users & other data), Redux(for data availability in app),Typescript(for adding types in js),React-Bootstrap(to assemble the layout),
+react-beautiful-dnd(the library for creating drag and drop content),FutureSliceDesign(files structure)
+
+**`What problems does this application solve?`**
+
+It was created to make it even easier for people to organize their tasks, for this they need to sort their subtasks in separate windows for work
+
+## Works 
+--Registration with email\
+--Registration with Gmail\
+--Registration with Github\
+--Authentication\
+--Drag&Drop(by half)\
+--Creating Boards
+
+## Not Works
+--Adding another List of tasks\
+--Settings in tasks List\
+--Comments in tasks\
+--Adding new tasks
+
+
+**The application structure consists of several parts: user - desk - task Lists - task (its data)**
+
 
 ## Available Scripts
 
